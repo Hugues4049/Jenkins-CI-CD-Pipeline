@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    environment {EXAMPLE_CREDS = credentials('773c3a8a-126b-494e-a480-098b5ef8c324')}
+
     stages {
 
         stage('Build from github') {
@@ -15,12 +17,11 @@ pipeline {
                 sh 'python -m unittest'
             }
         }
-        stage('Deploy') {
+        stage('deploy to dockerhub') { 
             steps {
-                echo 'deploying...'
-                
+                sh 'docker login -u $EXAMPLE_CREDS_USR -p $EXAMPLE_CREDS_PSW'
+                sh 'ddocker push hugues4049/ci_docker:tagname' 
             }
-        }
         
     }
 }
