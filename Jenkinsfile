@@ -25,7 +25,7 @@ pipeline {
         stage('deploy to dockerhub') {
             steps {
                 sh 'docker login -u $MY_CREDENTIALS_USR -p $MY_CREDENTIALS_PSW'
-                sh 'docker push hugues4049/ci_docker:tagname'
+                sh 'docker push hugues4049/ci_docker:latest'
             }
         }
     }
