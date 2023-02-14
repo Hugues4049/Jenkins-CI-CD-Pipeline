@@ -12,7 +12,7 @@ pipeline {
         stage('Build from github') {
             steps {
                
-            sh 'docker build -t jenkins . -t jenkins:latest'
+            sh 'docker build -t jenkins . -t hugues4049/ci_docker:latest'
             sh 'docker run -d jenkins'
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         stage('deploy to dockerhub') {
             steps {
                 sh 'docker login -u $MY_CREDENTIALS_USR -p $MY_CREDENTIALS_PSW'
-                sh 'docker push jenkins:latest'
+                sh 'docker push hugues4049/ci_docker:latest'
             }
         }
     }
