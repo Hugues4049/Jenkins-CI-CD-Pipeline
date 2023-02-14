@@ -7,7 +7,6 @@ pipeline {
         stage('Create a Staging'){
             steps {
                 sh 'git checkout staging'
-                sh 'git push origin staging'
             }
         }
         stage('Build from github') {
