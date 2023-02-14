@@ -12,7 +12,7 @@ pipeline {
         stage('Build from github') {
             steps {
                
-            sh 'docker build -t jenkins .'
+            sh 'docker build -t jenkins . -t hugues4049/ci_docker:latest'
             sh 'docker run -d jenkins'
             }
         }
