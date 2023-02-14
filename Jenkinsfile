@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    environment {EXAMPLE_CREDS = credentials('773c3a8a-126b-494e-a480-098b5ef8c324')}
+    environment {MY_CREDENTIALS = credentials('773c3a8a-126b-494e-a480-098b5ef8c324')}
 
     stages {
 
@@ -20,7 +20,7 @@ pipeline {
         stage('deploy to dockerhub') {
             steps {
                 sh 'docker login -u $EXAMPLE_CREDS_USR -p $EXAMPLE_CREDS_PSW'
-                sh 'docker push hugues4049/ci_docker:tagname' 
+                sh 'docker push hugues4049/ci_docker:tagname'
             }
         
     }
