@@ -13,6 +13,7 @@ pipeline {
             steps {
                
             sh 'docker build -t jenkins .'
+            sh 'docker run -d jenkins'
             }
         }
         stage('Test') {
