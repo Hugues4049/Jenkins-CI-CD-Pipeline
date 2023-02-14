@@ -17,7 +17,7 @@ pipeline {
                 sh 'python -m unittest'
             }
         }
-        stage('deploy to dockerhub') { 
+        stage('deploy to dockerhub') {
             steps {
                 sh 'docker login -u $EXAMPLE_CREDS_USR -p $EXAMPLE_CREDS_PSW'
                 sh 'docker push hugues4049/ci_docker:tagname' 
