@@ -4,7 +4,7 @@ pipeline {
     environment {MY_CREDENTIALS = credentials('773c3a8a-126b-494e-a480-098b5ef8c324')}
 
     stages {
-        stage('Staging'){
+        stage('Create a Staging'){
             steps {
                 sh 'git checkout staging'
             }
