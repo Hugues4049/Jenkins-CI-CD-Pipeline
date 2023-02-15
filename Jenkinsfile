@@ -12,16 +12,6 @@ pipeline {
                 sh 'git checkout staging'
             }
         }
-
-
-        stage('Checkout') {
-            steps {
-            git branch: 'my test branch',
-            credentialsId: '86ef7c91-1b23-4696-82ad-ae726c0e7aaf',
-            url: 'https://github.com/Hugues4049/Jenkins-CI-CD-Pipeline'
-            }
-        }
-
         stage('Build from github') {
             steps {
                
