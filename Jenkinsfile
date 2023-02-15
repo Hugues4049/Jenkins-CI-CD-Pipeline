@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout'){
             steps {
                 sshagent(credentials: ['github_priv_key']){
-                    //sh 'git branch --delete staging'
+                    sh 'git branch --delete staging'
                     sh 'git branch staging'
                     sh 'git checkout staging'
                 }
