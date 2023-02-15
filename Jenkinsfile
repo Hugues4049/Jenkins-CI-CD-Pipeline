@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
-    environment {MY_CREDENTIALS = credentials('773c3a8a-126b-494e-a480-098b5ef8c324')}
+    environment {
+        MY_CREDENTIALS = credentials('773c3a8a-126b-494e-a480-098b5ef8c324')
+        git_credential = credentials('86ef7c91-1b23-4696-82ad-ae726c0e7aaf')
+        }
 
     stages {
         stage('Create a Staging'){
@@ -9,6 +12,16 @@ pipeline {
                 sh 'git checkout staging'
             }
         }
+
+
+        stage('Checkout') {
+            steps {
+            git branch: 'my test branch',
+            credentialsId: '86ef7c91-1b23-4696-82ad-ae726c0e7aaf',
+            url: 'https://github.com/Hugues4049/Jenkins-CI-CD-Pipeline'
+            }
+        }
+
         stage('Build from github') {
             steps {
                
