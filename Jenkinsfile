@@ -8,9 +8,9 @@ pipeline {
         stage('Checkout'){
             steps {
                 sshagent(credentials: ['github_priv_key']){
-                    //sh 'git branch -D staging'
-                    sh 'git branch staging'
-                    sh 'git checkout staging'
+                    //sh 'git branch -D staging-branch'
+                    sh 'git branch staging-branch'
+                    sh 'git checkout staging-branch'
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
                 ssshagent(credentials: ['github_priv_key']){
                     sh 'git checkout main'
                     sh 'git pull origin main'
-                    sh 'git merge staging'
+                    sh 'git merge staging-branch'
                     sh 'git push origin main'
                 }
             }
