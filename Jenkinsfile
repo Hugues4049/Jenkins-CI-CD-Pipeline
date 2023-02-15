@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Merge to Main') {
             steps {
-                sh 'git merge main'
+                sh 'git merge origin/main'
                 sh 'git push'
             }
         }
