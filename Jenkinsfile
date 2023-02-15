@@ -34,7 +34,7 @@ pipeline {
         stage('Merge to Main') {
             steps {
                 sh 'git checkout main'
-                sh 'git merge staging'
+                /*sh 'git merge staging'*/
             }
         }
     }
