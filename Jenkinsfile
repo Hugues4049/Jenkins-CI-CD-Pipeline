@@ -3,16 +3,15 @@ pipeline {
 
     environment {
         MY_CREDENTIALS = credentials('773c3a8a-126b-494e-a480-098b5ef8c324')
-        git_credential = credentials('86ef7c91-1b23-4696-82ad-ae726c0e7aaf')
         }
-    triggers {
-        // Trigger the pipeline when a push is made to the dev branch
-        branch 'dev'
-    }
     stages {
-        stage('Create a Staging'){
+        stage('Checkout'){
             steps {
-                sh 'git checkout staging'
+                sshagent(credentials: ['github_priv_key']){
+                    sh 'git branch --delete staging'
+                    sh 'git branch staging'
+                    sh 'git checkout staging'
+                }
             }
         }
         stage('Build from github') {
@@ -35,8 +34,12 @@ pipeline {
         }
         stage('Merge to Main') {
             steps {
-                sh 'git checkout main'
-                //sh 'git merge staging'
+                ssshagent(credentials: ['github_priv_key']){
+                    sh 'git checkout main'
+                    sh 'git pull origin main'
+                    sh 'git merge staging'
+                    sh 'git push origin main'
+                }
             }
         }
     }
