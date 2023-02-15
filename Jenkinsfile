@@ -28,5 +28,11 @@ pipeline {
                 sh 'docker push hugues4049/ci_docker:latest'
             }
         }
+        stage('Merge to Main') {
+            steps {
+                sh 'git merge main'
+                sh 'git push'
+            }
+        }
     }
 }
