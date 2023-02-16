@@ -20,7 +20,7 @@ pipeline {
                 sh 'docker run -d jenkins'
             }
         }
-        stage('Test') {
+        stage('Tests') {
             steps {
                 sh 'python -m pip install flask'
                 sh 'python -m unittest'
