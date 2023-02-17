@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Merge to main') {
             steps {
-                sshagent(redentials: ['github_priv_key']){
+                sshagent(credentials: ['github_priv_key']){
                     sh 'git checkout main'
                     sh 'git pull origin main'
                     sh 'git merge staging-branch'
