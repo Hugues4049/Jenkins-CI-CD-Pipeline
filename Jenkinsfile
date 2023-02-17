@@ -32,9 +32,9 @@ pipeline {
                 sh 'docker push hugues4049/ci_docker:latest'
             }
         }
-        stage('Merge to Main') {
+        stage('Merge to main') {
             steps {
-                sshagent(credentials: ['github_priv_key']){
+                sshagent(redentials: ['github_priv_key']){
                     sh 'git checkout main'
                     sh 'git pull origin main'
                     sh 'git merge staging-branch'
